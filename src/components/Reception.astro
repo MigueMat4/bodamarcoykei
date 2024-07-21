@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import ruins from '../images/ruins.webp';
+import pinHeart from '../images/pin_heart.webp';
+---
+
+<section class="py-10 flex flex-wrap justify-center space-x-0 sm:space-x-10">
+    <div class="py-4">
+        <p class="text-[#A47E1B] text-2xl sm:text-3xl text-title">
+            <Image src={pinHeart} alt="Decoración" class="w-10 inline-block mx-2" />
+            Recepción
+        </p>
+        <Image src={ruins} alt="Iglesia La Merced" class="w-full" />
+    </div>
+    <div class="py-4">
+        <div class="h-0 sm:h-12"></div>
+        <p class="text-xl sm:text-5xl">Ruinas de San Jerónimo,</p>
+        <p class="text-xl sm:text-5xl">Antigua Guatemala</p>
+        <p class="text-2xl sm:text-6xl text-[#A47E1B]">5:30 PM</p>
+        <p class="primary-button w-full sm:w-1/2 mx-auto"><a href="https://maps.app.goo.gl/Q2UnZVj7qodmJFZeA" target="_blank">Ver ubicación</a></p>
+    </div>
+</section>
