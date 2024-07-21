@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import flightDecoration from '../images/flight_decoration.webp';
+---
+
+<section class="py-10">
+    <p class="text-[#A47E1B] text-lg sm:text-5xl text-title">
+        <Image src={flightDecoration} alt="Decoración" class="w-10 inline-block mx-2" />
+        Cuenta regresiva
+        <Image src={flightDecoration} alt="Decoración" class="w-10 inline-block mx-2" />
+    </p>
+    <div class="py-10 flex items-center justify-center">
+        <div class="flex items-center flex-col">
+          <div class="circle" id="days">0</div>
+          <div class="text">DÍAS</div>
+        </div>
+        <div class="flex items-center flex-col">
+          <div class="circle" id="hours">0</div>
+          <div class="text">HORAS</div>
+        </div>
+        <div class="flex items-center flex-col">
+          <div class="circle" id="minutes">0</div>
+          <div class="text">MINUTOS</div>
+        </div>
+    </div>
+    <p class="text-xl sm:text-5xl">❤️ <strong>SÁBADO 14 DICIEMBRE 2024</strong> ❤️</p>
+</section>
+
+<style>
+    .w-10 {
+        width: 10%;
+    }
+    .text-title {
+        font-family: 'BritishCastilla', sans-serif;
+    }
+    .circle {
+        align-items: center;
+        background-image: url('../images/counter.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #a47e1b;
+        display: flex;
+        font-size: 5vw;
+        justify-content: center;
+        height: 11vw;
+        margin: 0 10px;
+        width: 11vw;
+    }
+    .text {
+        text-align: center;
+        font-size: 2vw;
+        margin: 5px 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .circle {
+            height: 8vh;
+            width: 8vh;
+        }
+
+        .text {
+            font-size: 2vh;
+        }
+    }
+</style>
+
+<script>
+    function updateCounter(): void {
+        const now: Date = new Date();
+        const eventDate: Date = new Date("2024-12-14T13:30:00");
+
+        const timeLeft: number = eventDate.getTime() - now.getTime();
+
+        const days: number = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours: number = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes: number = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+        if (days >= 0) {
+            document.getElementById("days")!.innerText = days.toString();
+            document.getElementById("hours")!.innerText = hours.toString();
+            document.getElementById("minutes")!.innerText = minutes.toString();
+        } else {
+            document.getElementById("days")!.innerText = "0";
+            document.getElementById("hours")!.innerText = "0";
+            document.getElementById("minutes")!.innerText = "0";
+        }
+    }
+
+    setInterval(updateCounter, 1000);
+</script>
