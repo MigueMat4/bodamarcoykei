@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import photoFrame from '../images/photo_frame.webp';
+---
+
+<section class="py-10 px-4 flex justify-center items-center relative">
+    <div class="w-10/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" id="photo-container">
+        <img id="current-image" class="fade-in-out" alt="Fotos de los novios" loading="lazy" />
+    </div>
+    <Image src={photoFrame} alt="Marco de fotos" class="w-full" />
+</section>
+
+<style>
+    #photo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+    .fade-in-out {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    .fade-in-out.active {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    const images = [
+        '../src/images/bride_and_groom/1-min.webp',
+        '../src/images/bride_and_groom/2-min.webp',
+        '../src/images/bride_and_groom/3-min.webp',
+        '../src/images/bride_and_groom/4-min.webp',
+        '../src/images/bride_and_groom/5-min.webp',
+        '../src/images/bride_and_groom/6-min.webp',
+        '../src/images/bride_and_groom/7-min.webp',
+        '../src/images/bride_and_groom/8-min.webp',
+        '../src/images/bride_and_groom/9-min.webp',
+        '../src/images/bride_and_groom/10-min.webp',
+        '../src/images/bride_and_groom/11-min.webp',
+        '../src/images/bride_and_groom/12-min.webp',
+    ];
+
+    const imgElement = document.getElementById('current-image') as HTMLImageElement;
+    let currentIndex = 0;
+
+    function showNextImage() {
+        imgElement.style.opacity = '0';
+        imgElement.classList.remove('active');
+        imgElement.src = images[currentIndex];
+        currentIndex = (currentIndex + 1) % images.length;
+        setTimeout(() => {
+            imgElement.style.opacity = '1';
+            imgElement.classList.add('active');
+        }, 500);
+    }
+
+    setInterval(showNextImage, 3000);
+  </script>

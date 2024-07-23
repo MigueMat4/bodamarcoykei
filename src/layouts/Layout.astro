@@ -1,4 +1,7 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
 	title: string;
 }
@@ -10,14 +13,16 @@ const { title } = Astro.props;
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Sitio web de la boda de MArco Pérez y Kei Rodríguez." />
+		<meta name="description" content="Sitio web de la boda de Marco Pérez y Kei Rodríguez." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body class="h-full overflow-x-hidden text-2xl">
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 <style is:global>
@@ -32,11 +37,41 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
+	@font-face {
+		font-family: 'BellMT';
+  		src: url('../../public/fonts/bell_mt.woff') format('woff');
+  		font-weight: normal;
+  		font-style: normal;
+  		font-display: swap;
+	}
+	@font-face {
+		font-family: 'BritishCastilla';
+  		src: url('../../public/fonts/british_castilla-webfont.woff') format('woff');
+		font-weight: normal;
+  		font-style: normal;
+		  font-display: swap;
+	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: 'BellMT', sans-serif;
 	}
 	body {
 		background: #fff;
 		color: #88a7a4;
+		text-align: center;
+	}
+	.text-title {
+        font-family: 'BritishCastilla', sans-serif;
+    }
+	.primary-button {
+		background-color: #88a7a4;
+    	border-radius: 30px;
+    	color: #fff;
+    	cursor: pointer;
+	}
+	.secondary-button {
+		background-color: #a47e1b;
+    	border-radius: 30px;
+    	color: #fff;
+    	cursor: pointer;
 	}
 </style>

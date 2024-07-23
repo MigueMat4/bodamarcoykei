@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import pinCheck from '../images/pin_check.webp';
+---
+
+<section class="py-10 bg-[#9AAFAD] text-white">
+    <p class="text-[#A47E1B] text-2xl sm:text-4xl text-title">
+        <Image src={pinCheck} alt="Decoración" class="w-10 inline-block mx-2" />
+        Confirmar asistencia
+    </p>
+    <p class="p-4 sm:p-8 m-0 text-2xl sm:text-3xl">Amablemente te informamos que la confirmación es de carácter mandatorio y la fecha límite 
+        es el <strong>30 de agosto</strong>. En caso de no recibir tu confirmación antes de la fecha 
+        estaremos entendiendo que estás declinando la invitación y tu lugar se va a pasar a alguien 
+        de la lista de espera.
+    </p>
+    <p class="secondary-button w-9/12 sm:w-1/3 mx-auto"><a href="https://wa.link/lwueoo" target="_blank">Confirmar asistencia</a></p>
+</section>

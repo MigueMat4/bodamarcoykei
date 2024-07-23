@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import passportInvitation from '../images/passport.webp';
+import planeWedding from '../images/gifs/plane.gif'
+---
+
+<header class="bg-[#9AAFAD] relative px-4 py-12 sm:py-4 flex items-center">
+    <Image src={passportInvitation} alt="Pasaporte de invitación" class="w-1/3 h-auto mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10" />
+    <Image src={planeWedding} alt="Avión de Costa Rica a Guatemala" class="w-75 h-auto" />
+</header>
+
+<style>
+    .w-75 {
+        width: 75%;
+    }
+</style>

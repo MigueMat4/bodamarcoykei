@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import gift from '../images/gifts.webp';
+---
+
+<section class="py-10">
+    <p class="text-[#A47E1B] py-4 text-2xl sm:text-5xl text-title">
+        <Image src={gift} alt="Decoración" class="w-10 sm:w-20 inline-block mx-2" />
+        Obsequios
+    </p>
+    <p class="text-[#A47E1B] p-4 sm:p-8 text-2xl sm:text-5xl">Agradeceríamos que si desean bendecirnos con algún regalo sea en efectivo o por transferencia</p>
+    <p class="primary-button w-9/12 sm:w-1/3 mx-auto " id="check-banks">Ver datos bancarios</p>
+</section>
+<div class="popup hidden w-10/12 sm:w-1/2 rounded-3xl">
+    <section class="py-2">
+        <h1><strong>Guatemala</strong></h1>
+        <ul class="py-2">
+            <li>Keilyn Rodríguez Rodríguez</li>
+            <li>Banco Industrial, Monetaria</li>
+            <li><input class="border-2 rounded-lg border-[#A47E1B] border-solid text-center w-full" type="text" value="4190080343" id="first-bank"></li>
+        </ul>
+        <ul class="py-2">
+            <li>Marco Pérez Artiaga</li>
+            <li>Banrural, Ahorro</li>
+            <li><input class="border-2 rounded-lg border-[#A47E1B] border-solid text-center w-full" type="text" value="4322274673"></li>
+        </ul>
+    </section>
+    <section class="py-2">
+        <h1><strong>Costa Rica</strong></h1>
+        <ul class="py-2">
+            <li>Keilyn Rodríguez Rodríguez</li>
+            <li><input class="border-2 rounded-lg border-[#A47E1B] border-solid text-center w-full" type="text" value="CR91081400011021206781"></li>
+            <li><input class="border-2 rounded-lg border-[#A47E1B] border-solid text-center w-full mt-2" type="text" value="70663283"></li>
+        </ul>
+    </section>
+    <p class="secondary-button" id="close-popup">Cerrar</p>
+</div>
+
+<style>
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+    .visible {
+        display: block;
+    }
+</style>
+
+<script>
+    const btnCheckBanks = document.getElementById('check-banks')!;
+    const popUp = document.querySelector('.popup')!;
+    const btnClose = document.getElementById('close-popup')!;
+
+    btnCheckBanks.addEventListener('click', () => {
+        popUp.classList.toggle('visible');
+        const copyText = document.getElementById("first-bank")! as HTMLInputElement;
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+    });
+
+    btnClose.addEventListener('click', () => {
+            popUp.classList.remove('visible');
+    });
+</script>
